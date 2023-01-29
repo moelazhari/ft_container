@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:24:22 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:27:16 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,16 @@ namespace  ft
 			}
 
 		//Modifiers functions
-
+			template <class InputIterator>
+			void assign (InputIterator first, InputIterator last){
+				this->clear();
+				while (first != last)
+				{
+					this->push_back(*first);
+					first++;
+				}
+			}
+			
 			void push_back(const value_type& val){
 				if (this->_size == this->_capacity)
 					this->reserve(this->_capacity);
@@ -239,10 +248,10 @@ namespace  ft
 
 
 		private:
-			size_type 		_size;
+			size_type		_size;
 			size_type 		_capacity;
 			pointer 		_p;
-			allocator_type _allocator;
+			allocator_type	_allocator;
 	};
 }
 

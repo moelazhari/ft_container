@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:15:59 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:37:46 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,25 @@ int main ()
         std::cerr << e.what() << '\n';
     }
 
+// front() returns a reference to the first element in the vector
+    std::cout << "The first element is " << fifth.front() << '\n';
+
+// back() returns a reference to the last element in the vector
+    std::cout << "The last element is " << fifth.back() << '\n';
+
+// data() returns a direct pointer to the memory array used internally by the vector to store its owned elements.
+    std::cout << "The data of fifth is " << fifth.data() << '\n';
+
+// assign() assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
+    ft::vector<int> sixth(69, 420);
+    fifth.assign(sixth.begin(), sixth.end());
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+    std::cout << "The contents of fifth are:";
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
+    
 
   return 0;
 }
