@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:45:17 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 17:14:19 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,38 @@ namespace  ft
 				this->_allocator.destroy(this->_p + this->_size);
 				this->_size--;
 			}
+			// isert single element
+			iterator insert (iterator position, const value_type& val){
+				if (this->_size == this->_capacity)
+					this->reserve(this->_capacity);
+				pointer tmp = this->_allocator.allocate(this->_capacity);
+				iterator it = this->begin();
+				size_type i = 0;
+
+				while (it != position)
+				{
+					this->_allocator.construct(tmp + i, *it);
+					++it;
+					++i;
+				}
+				this->_allocator.construct(tmp + i, val);
+				++i;
+				while (it != this->end())
+				{
+					this->_allocator.construct(tmp + i, *it);
+					++it;
+					++i;
+				}
+
+				this->clear();
+				this->_allocator.deallocate(this->_p, this->_capacity);
+				
+				this->_p = tmp;
+				this->_size = i;
+				return (position);
+			}
+
+			
 
 			void clear(){
 				while (this->_size > 0)

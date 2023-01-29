@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:42:54 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 17:12:33 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,29 @@ int main ()
     for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
         std::cout << ' ' << *it;
     std::cout << '\n';
+
+  // push_back() adds a new element at the end of the vector, after its current last element. The content of val is copied (or moved) to the new element.
+    fifth.push_back(69);
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+    std::cout << "The contents of the last element in fifth is :" << fifth.back() << '\n';
+
+  // pop_back() removes the last element in the vector, effectively reducing the container size by one.
+    fifth.pop_back();
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+    std::cout << "The contents of the last element in fifth is :" << fifth.back() << '\n';
+
+  // insert() inserts new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted.  
+    fifth.insert(fifth.begin(), 69);
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+    std::cout << "The contents of the first element in fifth is :" << fifth.front() << '\n';
+    std::cout << "The contents of fifth are:";
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
+      
     
 
   return 0;
