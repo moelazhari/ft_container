@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:09:41 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:15:59 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,42 @@ int main ()
   int myints[] = {16,2,77,29};
   ft::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
 
-//   std::cout << "The contents of fifth are:";
-//   for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+  std::cout << "The contents of fifth are:";
+  for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+    std::cout << ' ' << *it;
+  std::cout << '\n';
 
-//   // size() returns the number of elements
-//     std::cout << "The size of fifth is " << fifth.size() << '\n';
-//  // max_size() returns the maximum possible number of elements
-//     std::cout << "The max size of fifth is " << fifth.max_size() << '\n';
+  // size() returns the number of elements
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+ // max_size() returns the maximum possible number of elements
+    std::cout << "The max size of fifth is " << fifth.max_size() << '\n';
 
-// // resize() resizes the container so that it contains n elements.
-//     fifth.resize(69);
-//     std::cout << "The size of fifth is " << fifth.size() << '\n';
+// resize() resizes the container so that it contains n elements.
+    fifth.resize(69);
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
     
-// // capacity() returns the size of the storage space currently allocated for the vector, expressed in terms of elements.
-//     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
-// // empty() returns whether the container is empty
-//     std::cout << "The fifth is " << (fifth.empty() ? "empty" : "not empty") << '\n';
+// capacity() returns the size of the storage space currently allocated for the vector, expressed in terms of elements.
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+// empty() returns whether the container is empty
+    std::cout << "The fifth is " << (fifth.empty() ? "empty" : "not empty") << '\n';
 
 // reserve() requests that the vector capacity be at least enough to contain n elements.
-      fifth.reserve(69);
-    // std::cout << "The capacity of fifth  " << fifth.capacity() << '\n';
+    fifth.reserve(6969);
+    std::cout << "The capacity of fifth  " << fifth.capacity() << '\n';
 // shrink_to_fit() requests the container to reduce its capacity to fit its size.
-    std::cout << "before shrink_to_fit: capacity: " << fifth.capacity() << "  size:" << fifth.size() << std::endl;
     fifth.shrink_to_fit();
-    std::cout << "before shrink_to_fit: capacity: " << fifth.capacity() << "  size:" << fifth.size() << std::endl;
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
 
 
 // operator[] returns a reference to the element at a certain position
-//     std::cout << "The element at position 3 is " << fifth[3] << '\n';
-// // at() returns a reference to the element at a certain position
-//     try {
-//         std::cout << "The element at position 3 is " << fifth.at(69) << '\n';
-//     }
-//     catch (const std::exception& e) {
-//         std::cerr << e.what() << '\n';
-//     }
+    std::cout << "The element at position 3 is " << fifth[3] << '\n';
+// at() returns a reference to the element at a certain position
+    try {
+        std::cout << "The element at position 3 is " << fifth.at(69) << '\n';
+    }
+    catch (const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
 
 
   return 0;

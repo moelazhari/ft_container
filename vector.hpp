@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:10:46 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:24:22 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ namespace  ft
 			
 			
 			typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
-			typedef size_t      									size_type;
+			typedef size_t      											size_type;
 
 
 		//constructors
@@ -89,7 +89,7 @@ namespace  ft
 			}
 		//operator=
 			vector& operator= (const vector& x){
-				//free memory
+				//free this->vector
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.destroy(this->_p + i);
 				this->_allocator.deallocate(this->_p, this->_capacity);
@@ -124,6 +124,7 @@ namespace  ft
 			size_type max_size() const{
 				return (this->_allocator.max_size());
 			}
+
 			void resize (size_type n, value_type val = value_type()){
 				if (n > this->_size)
 				{
@@ -217,6 +218,7 @@ namespace  ft
 			}
 
 		//Modifiers functions
+
 			void push_back(const value_type& val){
 				if (this->_size == this->_capacity)
 					this->reserve(this->_capacity);
@@ -227,6 +229,11 @@ namespace  ft
 			void pop_back(){
 				this->_allocator.destroy(this->_p + this->_size);
 				this->_size--;
+			}
+
+			void clear(){
+				while (this->_size > 0)
+					this->pop_back();
 			}
 
 
