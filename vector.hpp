@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 01:13:32 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:51:15 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ namespace  ft
 			size_type max_size() const{
 				return (this->_allocator.max_size());
 			}
-
 			void resize (size_type n, value_type val = value_type()){
 				if (n > this->_size)
 				{
