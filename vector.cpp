@@ -6,12 +6,13 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 19:12:57 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 19:59:40 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "./vector.hpp"
+#include <vector>
 
 
 // constructing vectors
@@ -76,7 +77,7 @@ int main ()
     std::cout << "The data of fifth is " << fifth.data() << '\n';
 
 // assign() assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
-    ft::vector<int> sixth(1000, 1);
+    ft::vector<int> sixth(5, 7);
     fifth.assign(sixth.begin(), sixth.end());
     std::cout << "The size of fifth is " << fifth.size() << '\n';
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
@@ -98,12 +99,18 @@ int main ()
     std::cout << "The size of fifth is " << fifth.size() << '\n';
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
     std::cout << "The contents of the last element in fifth is :" << fifth.back() << '\n';
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
 
   // pop_back() removes the last element in the vector, effectively reducing the container size by one.
     fifth.pop_back();
     std::cout << "The size of fifth is " << fifth.size() << '\n';
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
     std::cout << "The contents of the last element in fifth is :" << fifth.back() << '\n';
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
 
   // insert() inserts new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted.  
     fifth.insert(fifth.begin(), 69);
@@ -115,7 +122,7 @@ int main ()
         std::cout << ' ' << *it;
     std::cout << '\n';
 
-    fifth.insert(fifth.begin(), 1000, 69);
+    fifth.insert(fifth.begin(), 4, 1);
     std::cout << "The size of fifth is " << fifth.size() << '\n';
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
     std::cout << "The contents of the first element in fifth is :" << fifth.front() << '\n';
@@ -124,14 +131,25 @@ int main ()
         std::cout << ' ' << *it;
     std::cout << '\n';
 
-    fifth.insert(fifth.begin() + 7 , sixth.begin(), sixth.end());
+    fifth.insert(fifth.begin() + 4 , sixth.begin(), sixth.end());
     std::cout << "The size of fifth is " << fifth.size() << '\n';
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
-    std::cout << "The contents of the first element in fifth is :" << fifth.front() << '\n';
     std::cout << "The contents of fifth are:";
     for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
         std::cout << ' ' << *it;
     std::cout << '\n';
+    
+  // erase() removes from the vector either a single element (position) or a range of elements ([first,last)).
+    fifth.erase(fifth.begin());
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+    std::cout << "The contents of fifth are:";
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
+    
+
+    
     
       
     
