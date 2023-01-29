@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 21:44:45 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 22:44:18 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int main ()
   ft::vector<int> third (second.begin(),second.end());  // iterating through second
   ft::vector<int> fourth (third);                       // a copy of third
 
+  //operator= overload
+  first = second;
+  
   // the iterator constructor can also be used to construct from arrays:
   int myints[] = {16,2,77,29};
   ft::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
@@ -160,6 +163,24 @@ int main ()
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
     std::cout << "The contents of fifth are:";
     for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
+
+  // swap() exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
+    fifth.swap(sixth);
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+    std::cout << "The contents of fifth are:";
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
+
+    std::cout << "----------------------------------------" << std::endl;
+
+    std::cout << "The size of sixth is " << sixth.size() << '\n';
+    std::cout << "The capacity of sixth is " << sixth.capacity() << '\n';
+    std::cout << "The contents of sixth are:";
+    for (ft::vector<int>::iterator it = sixth.begin(); it != sixth.end(); ++it)
         std::cout << ' ' << *it;
     std::cout << '\n';
 

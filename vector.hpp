@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 21:53:46 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 22:55:06 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,17 @@ namespace  ft
 			}
 		//operator=
 			vector& operator= (const vector& x){
-				//free this->vector
-				for (size_type i = 0; i < this->_size; i++)
-					this->_allocator.destroy(this->_p + i);
-				this->_allocator.deallocate(this->_p, this->_capacity);
+				if (this->_size)
+				{
+					this->clear();
+					this->_allocator.deallocate(this->_p, this->_capacity);
+				}
 				// copy content of x
+				this->_allocator = x._allocator;
 				this->_size = x._size;
 				this->_capacity = x._capacity;
 				this->_p = this->_allocator.allocate(this->_capacity);
+				
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(this->_p + i, x._p[i]);
 				return (*this);
@@ -385,21 +388,22 @@ namespace  ft
 				return (first);
 			}
 
+			void swap (vector& x){
+				ft::vector<value_type> tmp;
+				tmp = x;
+				x = *this;
+				*this = tmp;
+			}
+			
 			void clear(){
 				while (this->_size > 0)
 					this->pop_back();
 			}
-		
-
-			
-
 		// Allocator
 			allocator_type get_allocator() const{
 				return (this->_allocator);
 			}
-
-	
-
+		// private attributes
 		private:
 			size_type		_size;
 			size_type 		_capacity;
@@ -409,9 +413,9 @@ namespace  ft
 }
 // Non-member function overloads
 
-template <class T, class Alloc>
-  	void swap (vector<T,Alloc>& x, vector<T,Alloc>& y){
-			x.swap(y);
-		}
+// template <class T, class Alloc>
+//   void swap (vector<T,Alloc>& x, vector<T,Alloc>& y){
+// 	x.swap(y);
+// }
 
 #endif
