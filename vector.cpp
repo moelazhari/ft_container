@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 17:32:35 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 19:12:57 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int main ()
     std::cout << "The data of fifth is " << fifth.data() << '\n';
 
 // assign() assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
-    ft::vector<int> sixth(69, 420);
+    ft::vector<int> sixth(1000, 1);
     fifth.assign(sixth.begin(), sixth.end());
     std::cout << "The size of fifth is " << fifth.size() << '\n';
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
@@ -115,7 +115,16 @@ int main ()
         std::cout << ' ' << *it;
     std::cout << '\n';
 
-    fifth.insert(fifth.begin(), 6, 69);
+    fifth.insert(fifth.begin(), 1000, 69);
+    std::cout << "The size of fifth is " << fifth.size() << '\n';
+    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
+    std::cout << "The contents of the first element in fifth is :" << fifth.front() << '\n';
+    std::cout << "The contents of fifth are:";
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
+
+    fifth.insert(fifth.begin() + 7 , sixth.begin(), sixth.end());
     std::cout << "The size of fifth is " << fifth.size() << '\n';
     std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
     std::cout << "The contents of the first element in fifth is :" << fifth.front() << '\n';
