@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:39:51 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:45:17 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,8 @@ namespace  ft
 
 		//Modifiers functions
 			template <class InputIterator>
-			void assign (InputIterator first, InputIterator last){
+			void assign (InputIterator first,\
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type last){
 				this->clear();
 				while (first != last)
 				{
