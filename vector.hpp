@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 15:59:07 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:10:46 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ namespace  ft
 						this->_allocator.construct(tmp + i, this->_p[i]);
 					
 					for (size_type i = 0; i < this->_size; i++)
-						this->pop_back();
+						this->_allocator.destroy(this->_p + i);
 					this->_allocator.deallocate(this->_p, this->_capacity);
 					
 					this->_p = tmp;

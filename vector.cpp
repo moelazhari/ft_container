@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 01:16:37 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:09:41 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,12 @@ int main ()
 //     std::cout << "The fifth is " << (fifth.empty() ? "empty" : "not empty") << '\n';
 
 // reserve() requests that the vector capacity be at least enough to contain n elements.
-    fifth.reserve(6969);
-    std::cout << "The capacity of fifth  " << fifth.capacity() << '\n';
+      fifth.reserve(69);
+    // std::cout << "The capacity of fifth  " << fifth.capacity() << '\n';
 // shrink_to_fit() requests the container to reduce its capacity to fit its size.
+    std::cout << "before shrink_to_fit: capacity: " << fifth.capacity() << "  size:" << fifth.size() << std::endl;
     fifth.shrink_to_fit();
-    std::cout << "The capacity of fifth after shrink " << fifth.capacity() << '\n';
-
-    
+    std::cout << "before shrink_to_fit: capacity: " << fifth.capacity() << "  size:" << fifth.size() << std::endl;
 
 
 // operator[] returns a reference to the element at a certain position
