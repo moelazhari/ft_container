@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 15:51:15 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:59:07 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,21 @@ namespace  ft
 	{
 		public:
 		// Member types
-			typedef T											value_type;
-			typedef Alloc										allocator_type;
-			typedef typename allocator_type::reference			reference;
-			typedef typename allocator_type::const_reference	const_reference;
-			typedef typename allocator_type::pointer         	pointer; 
-			typedef typename allocator_type::const_pointer   	const_pointer;
-			typedef typename allocator_type::difference_type 	difference_type;
-			typedef typename allocator_type::size_type       	size_type;
+			typedef T														value_type;
+			typedef Alloc													allocator_type;
+			typedef typename allocator_type::reference						reference;
+			typedef typename allocator_type::const_reference				const_reference;
+			typedef typename allocator_type::pointer         				pointer; 
+			typedef typename allocator_type::const_pointer   				const_pointer;
+			// Iterators	
+			typedef	Myiterator<value_type>									iterator;
+			typedef	Myiterator<const value_type>							const_iterator;
 
-		// Iterators
-			typedef	Myiterator<value_type>						iterator;
-			typedef	Myiterator<const value_type>				const_iterator;
+			
+			
+			typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
+			typedef size_t      									size_type;
+
 
 		//constructors
 			//default constructor
