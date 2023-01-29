@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 20:02:26 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 21:44:45 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,22 @@
 // constructing vectors
 #include <iostream>
 
+class Foo
+{
+    public:
+      Foo(): a(0), b(0){
+        
+      };
+      Foo(int a, double b): a(a), b(b){
+
+      };
+    int a;
+    double b;
+};
+  
 int main ()
 {
-  //constructors used in the same order as described above:
+  // constructors used in the same order as described above:
   ft::vector<int> first;                                // empty vector of ints
   ft::vector<int> second (4,100);                       // four ints with value 100
   ft::vector<int> third (second.begin(),second.end());  // iterating through second
@@ -52,10 +65,6 @@ int main ()
 // reserve() requests that the vector capacity be at least enough to contain n elements.
     fifth.reserve(6969);
     std::cout << "The capacity of fifth  " << fifth.capacity() << '\n';
-// shrink_to_fit() requests the container to reduce its capacity to fit its size.
-    fifth.shrink_to_fit();
-    std::cout << "The capacity of fifth is " << fifth.capacity() << '\n';
-
 
 // operator[] returns a reference to the element at a certain position
     std::cout << "The element at position 3 is " << fifth[3] << '\n';
@@ -73,8 +82,6 @@ int main ()
 // back() returns a reference to the last element in the vector
     std::cout << "The last element is " << fifth.back() << '\n';
 
-// data() returns a direct pointer to the memory array used internally by the vector to store its owned elements.
-    std::cout << "The data of fifth is " << fifth.data() << '\n';
 
 // assign() assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
     ft::vector<int> sixth(5, 7);
@@ -156,8 +163,6 @@ int main ()
         std::cout << ' ' << *it;
     std::cout << '\n';
 
-
-    
     
       
     

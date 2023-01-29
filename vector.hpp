@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 20:02:06 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 21:53:46 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,6 @@ namespace  ft
 				return (this->_p + this->_size);
 			}
 
-			const_iterator cbegin(){
-				return (this->_p);
-			}
-
-			const_iterator cend() const{
-				return (this->_p + this->_size);
-			}
 		//Capacity functions
 			size_type size() const{
 				return (this->_size);
@@ -163,15 +156,6 @@ namespace  ft
 				}
 			}
 		
-			void shrink_to_fit(){
-				if (this->_capacity == this->_size)
-					return ;
-				while (this->_capacity > this->_size)
-				{
-					this->_allocator.destroy(this->_p + this->_capacity);
-					this->_capacity--;
-				}
-			}
 		//Element access functions
 			reference operator[](size_type n){
 				return (this->_p[n]);
@@ -207,14 +191,6 @@ namespace  ft
 
 			const_reference back() const{
 				return (this->_p[this->_size - 1]);
-			}
-			
-			value_type* data(){
-				return (this->_p);
-			}
-
-			const value_type* data() const{
-				return (this->_p);
 			}
 
 		//Modifiers functions
@@ -409,16 +385,20 @@ namespace  ft
 				return (first);
 			}
 
-			
 			void clear(){
 				while (this->_size > 0)
 					this->pop_back();
 			}
+		
+
+			
 
 		// Allocator
 			allocator_type get_allocator() const{
 				return (this->_allocator);
 			}
+
+	
 
 		private:
 			size_type		_size;
@@ -427,5 +407,11 @@ namespace  ft
 			allocator_type	_allocator;
 	};
 }
+// Non-member function overloads
+
+template <class T, class Alloc>
+  	void swap (vector<T,Alloc>& x, vector<T,Alloc>& y){
+			x.swap(y);
+		}
 
 #endif
