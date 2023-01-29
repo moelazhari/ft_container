@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 17:32:44 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 17:41:06 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,13 +308,45 @@ namespace  ft
 
 				this->clear();
 				this->_allocator.deallocate(this->_p, this->_capacity);
-				
+
 				this->_p = tmp;
 				this->_size = i;
 			}
+			// insert range
+			template <class InputIterator>
+			void insert (iterator position, InputIterator first, InputIterator last){
+				if (this->_size == this->_capacity)
+					this->reserve(this->_capacity);
+				pointer tmp = this->_allocator.allocate(this->_capacity);
+				iterator it = this->begin();
+				size_type i = 0;
 
+				while (it != position)
+				{
+					this->_allocator.construct(tmp + i, *it);
+					++it;
+					++i;
+				}
+				while (first != last)
+				{
+					this->_allocator.construct(tmp + i, *first);
+					++i;
+					++first;
+				}
+				while (it != this->end())
+				{
+					this->_allocator.construct(tmp + i, *it);
+					++it;
+					++i;
+				}
+
+				this->clear();
+				this->_allocator.deallocate(this->_p, this->_capacity);
+
+				this->_p = tmp;
+				this->_size = i;
+			}
 			
-
 			void clear(){
 				while (this->_size > 0)
 					this->pop_back();
