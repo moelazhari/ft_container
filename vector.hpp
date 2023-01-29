@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 16:27:16 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:39:51 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,15 @@ namespace  ft
 				{
 					this->push_back(*first);
 					first++;
+				}
+			}
+
+			void assign (size_type n, const value_type& val){
+				this->clear();
+				while (n > 0)
+				{
+					this->push_back(val);
+					--n;
 				}
 			}
 			
