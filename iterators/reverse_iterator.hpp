@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 23:55:49 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 00:27:20 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 template <class Iterator> 
 class Myreverse_iterator{
 	private:
-		Iterator base;
+		Iterator_type _base;
 
 	public:
 	// member types
@@ -28,20 +28,25 @@ class Myreverse_iterator{
 		typedef typename	iterator_traits<Iterator>::pointer				pointer;
 		typedef typename	iterator_traits<Iterator>::reference			reference;
 
-	// constructors
-		// default
+	// member functions
+		// default constructor
 		Myreverse_iterator() {
 			return ;
 		}
-		// initialization
-		explicit Myreverse_iterator (Iterator_type x) : base(x) {
+		// initialization constructor
+		explicit Myreverse_iterator (Iterator_type x) : _base(x) {
 			return ;
 		}
-		// copy
+		// copy constructor
 		template <class Iter>
-		Myreverse_iterator (const Myreverse_iterator<Iter>& rev_it) : base(rev_it.base){
+		Myreverse_iterator (const Myreverse_iterator<Iter>& rev_it) : base(rev_it._base()){
 			return ;
 		}
+		
+		iterator_type base() const{
+			return _base;
+		}
+
 }
 
 #endif

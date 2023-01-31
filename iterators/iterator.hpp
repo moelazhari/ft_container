@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 23:49:20 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/27 22:45:33 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 00:01:06 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ namespace ft
             typedef T                                           value_type;
             typedef T*                                          pointer;
             typedef T&                                          reference;
-            typedef typename  std::random_access_iterator_tag   iterator_category;
+            typedef typename std::random_access_iterator_tag   iterator_category;
 
             //constructors
             Myiterator() : _ptr(NULL) {
