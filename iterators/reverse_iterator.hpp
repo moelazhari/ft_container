@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 23:53:25 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 23:54:58 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ class Myreverse_iterator{
 		Myreverse_iterator() {
 			return ;
 		}
-
+		// initialization
+		explicit Myreverse_iterator (Iterator_type x) : base(x) {
+			return ;
+		}
 	
-
 }
 
 #endif
