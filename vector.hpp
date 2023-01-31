@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 19:30:00 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 19:32:17 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,21 +424,19 @@ template <class T, class Alloc>
 	return (ft::equal(v.begin(), v.end(), v2.begin()));
   }
 
-// template <class T, class Alloc>
-//   bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-// 	return (!(lhs == rhs));
-//   }
+template <class T, class Alloc>
+  bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+	return (!(lhs == rhs));
+  }
 
-// template <class T, class Alloc>
-//   bool operator<  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+template <class T, class Alloc>
+  bool operator<  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
 
-// 	ft::vector<T,Alloc>::const_iterator first1 = lhs.begin();
-// 	ft::vector<T,Alloc>::const_iterator last1 = lhs.end();
-// 	ft::vector<T,Alloc>::const_iterator first2 = rhs.begin();
-// 	ft::vector<T,Alloc>::const_iterator last2 = rhs.end();
+	ft::vector<T, Alloc>	v(lhs);
+	ft::vector<T, Alloc>	v2(rhs);
 
-// 	return (ft::lexicographical_compare(first1, last1, first2, last2));
-//   }
+	return (ft::lexicographical_compare(v.begin(), v.end(), v2.begin(), v2.end()));
+  }
 
 // template <class T, class Alloc>
 //   bool operator<= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
