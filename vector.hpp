@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 19:12:46 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 19:30:00 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,34 +417,43 @@ template <class T, class Alloc>
   bool operator== (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
 	if (lhs.size() != rhs.size())
 		return (false);
+	
+	ft::vector<T, Alloc>	v(lhs);
+	ft::vector<T, Alloc>	v2(rhs);
 
-	return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+	return (ft::equal(v.begin(), v.end(), v2.begin()));
   }
 
-template <class T, class Alloc>
-  bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-	return (!(lhs == rhs));
-  }
+// template <class T, class Alloc>
+//   bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+// 	return (!(lhs == rhs));
+//   }
 
-template <class T, class Alloc>
-  bool operator<  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-	return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
-  }
+// template <class T, class Alloc>
+//   bool operator<  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
 
-template <class T, class Alloc>
-  bool operator<= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-	return (!(rhs < lhs));
-  }
+// 	ft::vector<T,Alloc>::const_iterator first1 = lhs.begin();
+// 	ft::vector<T,Alloc>::const_iterator last1 = lhs.end();
+// 	ft::vector<T,Alloc>::const_iterator first2 = rhs.begin();
+// 	ft::vector<T,Alloc>::const_iterator last2 = rhs.end();
 
-template <class T, class Alloc>
-  bool operator>  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-	return (rhs < lhs);
-  }
+// 	return (ft::lexicographical_compare(first1, last1, first2, last2));
+//   }
 
-template <class T, class Alloc>
-  bool operator>= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-	return (!(lhs < rhs));
-  }
+// template <class T, class Alloc>
+//   bool operator<= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+// 	return (!(rhs < lhs));
+//   }
+
+// template <class T, class Alloc>
+//   bool operator>  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+// 	return (rhs < lhs);
+//   }
+
+// template <class T, class Alloc>
+//   bool operator>= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+// 	return (!(lhs < rhs));
+//   }
 
 template <class T, class Alloc>
   void swap (ft::vector<T,Alloc>& x, ft::vector<T,Alloc>& y){
