@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 22:51:56 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 23:19:58 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 
 template <class Iterator> 
-class reverse_iterator{
+class Myreverse_iterator{
+	public:
+		typedef 			Iterator										Iterator_type;
+		typedef typename	iterator_traits<Iterator>::iterator_category	iterator_category;          
+		typedef typename	iterator_traits<Iterator>::value_type			value_type;
+		typedef typename	iterator_traits<Iterator>::difference_type		difference_type;
+		typedef typename	iterator_traits<Iterator>::pointer				pointer;
+		typedef typename	iterator_traits<Iterator>::reference			reference;
 
-
-
+	
 
 }
 

@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 22:42:03 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 23:10:36 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ namespace  ft
 				difference_type n = last - first;
 
 				this->_size = n;
-				this->_capacity = this->_size;
+				this->_capacity = this->_size * 2;
 				this->_p = _allocator.allocate(this->_capacity);
 
 				while (last != first)
