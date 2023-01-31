@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 19:12:16 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 19:12:46 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -446,5 +446,9 @@ template <class T, class Alloc>
 	return (!(lhs < rhs));
   }
 
+template <class T, class Alloc>
+  void swap (ft::vector<T,Alloc>& x, ft::vector<T,Alloc>& y){
+	x.swap(y);
+}
 
 #endif
