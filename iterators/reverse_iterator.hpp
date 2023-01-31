@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 23:54:58 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 23:55:49 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ class Myreverse_iterator{
 		explicit Myreverse_iterator (Iterator_type x) : base(x) {
 			return ;
 		}
-	
+		// copy
+		template <class Iter>
+		Myreverse_iterator (const Myreverse_iterator<Iter>& rev_it) : base(rev_it.base){
+			return ;
+		}
 }
 
 #endif
