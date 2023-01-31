@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 18:28:37 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 19:05:15 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,5 +412,18 @@ namespace  ft
 	};
 }
 // Non-member function overloads
+
+template <class T, class Alloc>
+  bool operator== (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+	if (lhs.size() != rhs.size())
+		return (false);
+
+	return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+  }
+
+template <class T, class Alloc>
+  bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+	return (!(lhs == rhs));
+  }
 
 #endif
