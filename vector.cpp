@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 22:02:33 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 22:33:19 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,11 +190,11 @@ int main ()
     else
         std::cout << "fifth and sixth are not equal" << std::endl;
 
-// operator!= returns whether the contents of the two vectors are not equal, that is, they have different sizes or some element does not compare equal.
-    // if (fifth != sixth)
-    //     std::cout << "fifth and sixth are not equal" << std::endl;
-    // else
-    //     std::cout << "fifth and sixth are equal" << std::endl;
+//operator!= returns whether the contents of the two vectors are not equal, that is, they have different sizes or some element does not compare equal.
+    if (fifth != sixth)
+        std::cout << "fifth and sixth are not equal" << std::endl;
+    else
+        std::cout << "fifth and sixth are equal" << std::endl;
 
 // operator< returns whether the contents of the first vector are lexicographically less than the contents of the second.
     if (fifth < sixth)
@@ -203,22 +203,22 @@ int main ()
         std::cout << "fifth is not lexicographically less than sixth" << std::endl;
 
 // operator<= returns whether the contents of the first vector are lexicographically less than or equal to the contents of the second.
-//     if (fifth <= sixth)
-//         std::cout << "fifth is lexicographically less than or equal to sixth" << std::endl;
-//     else
-//         std::cout << "fifth is not lexicographically less than or equal to sixth" << std::endl;
+    if (fifth <= sixth)
+        std::cout << "fifth is lexicographically less than or equal to sixth" << std::endl;
+    else
+        std::cout << "fifth is not lexicographically less than or equal to sixth" << std::endl;
 
-// // operator> returns whether the contents of the first vector are lexicographically greater than the contents of the second.
-//     if (fifth > sixth)
-//         std::cout << "fifth is lexicographically greater than sixth" << std::endl;
-//     else
-//         std::cout << "fifth is not lexicographically greater than sixth" << std::endl;
+// operator> returns whether the contents of the first vector are lexicographically greater than the contents of the second.
+    if (fifth > sixth)
+        std::cout << "fifth is lexicographically greater than sixth" << std::endl;
+    else
+        std::cout << "fifth is not lexicographically greater than sixth" << std::endl;
 
-// // operator>= returns whether the contents of the first vector are lexicographically greater than or equal to the contents of the second.
-//     if (fifth >= sixth)
-//         std::cout << "fifth is lexicographically greater than or equal to sixth" << std::endl;
-//     else
-//         std::cout << "fifth is not lexicographically greater than or equal to sixth" << std::endl;
+// operator>= returns whether the contents of the first vector are lexicographically greater than or equal to the contents of the second.
+    if (fifth >= sixth)
+        std::cout << "fifth is lexicographically greater than or equal to sixth" << std::endl;
+    else
+        std::cout << "fifth is not lexicographically greater than or equal to sixth" << std::endl;
 
   return 0;
 }

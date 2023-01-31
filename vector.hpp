@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 22:13:12 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 22:42:03 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ namespace  ft
 				return ;
 			}	
 			// fill constructor
-			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _size(n), _capacity(n), _allocator(alloc) {
-				this->_p = this->_allocator.allocate(this->_size);
+			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _size(n), _capacity(n * 2), _allocator(alloc) {
+				this->_p = this->_allocator.allocate(this->_capacity);
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(this->_p + i, val);
 			}
@@ -124,7 +124,7 @@ namespace  ft
 			void resize (size_type n, value_type val = value_type()){
 				if (n > this->_size)
 				{
-					this->reserve(n);
+					this->reserve(n * 2);
 					while (n > this->_size)
 						this->push_back(val);
 				}
@@ -219,7 +219,7 @@ namespace  ft
 			
 			void push_back(const value_type& val){
 				if (this->_size == this->_capacity)
-					this->reserve(this->_capacity);
+					this->reserve(this->_capacity * 2);
 				this->_allocator.construct(this->_p + this->_size, val);
 				this->_size++;
 			}
@@ -251,8 +251,6 @@ namespace  ft
 				}
 
 				this->clear();
-			
-				this->reserve(this->_capacity + 1);
 				this->_allocator.deallocate(this->_p, this->_capacity);
 				
 				this->_p = tmp;
@@ -286,8 +284,6 @@ namespace  ft
 				}
 
 				this->clear();
-
-				this->reserve(this->_capacity + n);
 				this->_allocator.deallocate(this->_p, this->_capacity);
 
 				this->_p = tmp;
