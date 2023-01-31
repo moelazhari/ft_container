@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 22:55:06 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 18:28:37 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include "./iterators/iterator.hpp"
 #include "./ft_type_traits.hpp"
+#include "./ft_algorithm.hpp"
 
 namespace  ft
 {
@@ -40,7 +41,6 @@ namespace  ft
 			
 			typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
 			typedef size_t      											size_type;
-
 
 		//constructors
 			//default constructor
@@ -412,10 +412,5 @@ namespace  ft
 	};
 }
 // Non-member function overloads
-
-// template <class T, class Alloc>
-//   void swap (vector<T,Alloc>& x, vector<T,Alloc>& y){
-// 	x.swap(y);
-// }
 
 #endif
