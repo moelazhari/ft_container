@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 19:32:17 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/01/31 22:13:12 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ namespace  ft
 				}
 			}
 			//copy constructor
-			vector (const vector& x){
+			vector (const vector& x): _size(0), _capacity(0){
 				*this = x;
 			}
 		//destructor
 			~vector(){
-				if (this->_size == 0)
+				if (!this->_size)
 					return ;
 				while (this->_size > 0)
 				{
@@ -389,8 +389,7 @@ namespace  ft
 			}
 
 			void swap (vector& x){
-				ft::vector<value_type> tmp;
-				tmp = x;
+				ft::vector<value_type> tmp(x);
 				x = *this;
 				*this = tmp;
 			}
@@ -438,20 +437,20 @@ template <class T, class Alloc>
 	return (ft::lexicographical_compare(v.begin(), v.end(), v2.begin(), v2.end()));
   }
 
-// template <class T, class Alloc>
-//   bool operator<= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-// 	return (!(rhs < lhs));
-//   }
+template <class T, class Alloc>
+  bool operator<= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+	return (!(rhs < lhs));
+  }
 
-// template <class T, class Alloc>
-//   bool operator>  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-// 	return (rhs < lhs);
-//   }
+template <class T, class Alloc>
+  bool operator>  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+	return (rhs < lhs);
+  }
 
-// template <class T, class Alloc>
-//   bool operator>= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
-// 	return (!(lhs < rhs));
-//   }
+template <class T, class Alloc>
+  bool operator>= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+	return (!(lhs < rhs));
+  }
 
 template <class T, class Alloc>
   void swap (ft::vector<T,Alloc>& x, ft::vector<T,Alloc>& y){
