@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:54 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 22:36:06 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 22:40:11 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,29 @@ namespace ft {
 				return ;
 			}
 		// Member functions
+			bool empty() const{
+				return _ctnr.empty();
+			}
 
+			size_type size() const{
+				return _ctnr.size();
+			}
+
+			value_type& top(){
+				return _ctnr.back();
+			}
+
+			const value_type& top() const{
+				return _ctnr.back();
+			}
+
+			void push (const value_type& val){
+				_ctnr.push_back(val);
+			}
+
+			void pop(){
+				_ctnr.pop_back();
+			}
 
 			private:
 			container_type _ctnr;
