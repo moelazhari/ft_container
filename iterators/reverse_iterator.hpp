@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 19:54:54 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 19:56:03 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ namespace ft
 				Myreverse_iterator tmp = *this;
 				++this->_base;
 				return tmp;
+			}
+
+			Myreverse_iterator& operator-= (difference_type n){
+				this->_base += n;
+				return *this;
 			}
 
 			
