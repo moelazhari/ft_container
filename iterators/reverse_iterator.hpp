@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 19:57:45 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 20:01:25 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ namespace ft
 
 			pointer operator->() const{
 				return &(operator*());
+			}
+
+			reference operator[] (difference_type n) const{
+				return base()[-n-1];
 			}
 
 			
