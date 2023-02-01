@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 23:10:36 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 18:43:24 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ namespace  ft
 			// Iterators	
 			typedef	Myiterator<value_type>									iterator;
 			typedef	Myiterator<const value_type>							const_iterator;
+
+			typedef typename ft::reverse_iterator<iterator>					reverse_iterator;
+			typedef typename ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 
 			
 			

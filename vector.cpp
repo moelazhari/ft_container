@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/31 23:12:36 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 18:43:09 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,9 @@ int main ()
         std::cout << "fifth is lexicographically greater than or equal to sixth" << std::endl;
     else
         std::cout << "fifth is not lexicographically greater than or equal to sixth" << std::endl;
+
+// reverse_iterator rbegin() returns a reverse iterator pointing to the last element in the vector (i.e., its reverse beginning).
+
 
   return 0;
 }
