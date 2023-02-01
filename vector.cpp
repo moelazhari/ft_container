@@ -6,12 +6,13 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 21:17:12 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 22:43:14 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "./vector.hpp"
+#include "./stack.hpp"
 #include <vector>
 
 

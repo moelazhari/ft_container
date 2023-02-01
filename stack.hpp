@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:54 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 22:40:11 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 22:45:07 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,37 @@ namespace ft {
 			private:
 			container_type _ctnr;
 	};
+	// Non-member function overloads
+
+	template <class T, class Container>
+	bool operator== (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs){
+		return (lhs._ctnr == rhs._ctnr);
+	}
+
+	template <class T, class Container>
+	bool operator!= (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs){
+		return (lhs._ctnr != rhs._ctnr);
+	}
+
+	template <class T, class Container>
+	bool operator<  (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs){
+		return (lhs._ctnr < rhs._ctnr);
+	}
+
+	template <class T, class Container>
+	bool operator<= (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs){
+		return (lhs._ctnr <= rhs._ctnr);
+	}
+
+	template <class T, class Container>
+	bool operator>  (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs){
+		return (lhs._ctnr > rhs._ctnr);
+	}
+
+	template <class T, class Container>
+	bool operator>= (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs){
+		return (lhs._ctnr >= rhs._ctnr);
+	}
 
 }
 
