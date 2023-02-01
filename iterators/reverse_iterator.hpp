@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 20:26:20 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 20:28:20 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,19 @@ namespace ft
 	bool operator>= (const reverse_iterator<Iterator>& lhs, const reverse_iterator<Iterator>& rhs){
 		return lhs.base() <= rhs.base();
 	}
+	
+	template <class Iterator>  
+	Myreverse_iterator<Iterator> operator+ (typename Myreverse_iterator<Iterator>::difference_type n, 
+											const reverse_iterator<Iterator>& rev_it){
+		return rev_it + n;
+	}
+
+	template <class Iterator>
+	typename reverse_iterator<Iterator>::difference_type operator- (const reverse_iterator<Iterator>& lhs, 
+																	const reverse_iterator<Iterator>& rhs){
+		return rhs.base() - lhs.base();
+	}
+
 
 }
 
