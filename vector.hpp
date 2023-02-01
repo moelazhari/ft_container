@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 18:54:53 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 19:16:11 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ namespace  ft
 			typedef typename ft::Myreverse_iterator<iterator>				reverse_iterator;
 			typedef typename ft::Myreverse_iterator<const_iterator>			const_reverse_iterator;
 
-			
-			
 			typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
 			typedef size_t      											size_type;
 
@@ -223,7 +221,7 @@ namespace  ft
 			
 			void push_back(const value_type& val){
 				if (this->_size == this->_capacity)
-					this->reserve(this->_capacity * 2);
+					this->reserve((this->_capacity == 0) ? 2 : this->_capacity * 2 );
 				this->_allocator.construct(this->_p + this->_size, val);
 				this->_size++;
 			}
