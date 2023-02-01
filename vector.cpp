@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 19:33:55 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 20:16:27 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,19 +221,14 @@ int main ()
 		std::cout << "fifth is not lexicographically greater than or equal to sixth" << std::endl;
 
 
-	ft::vector<int> myvector;										//
+	ft::vector<int> myvector;										
 	for (int i=0; i<10; i++)
 		myvector.push_back(i);
 
-	typedef ft::vector<int>::iterator iter_type;
-															// ? 0 1 2 3 4 5 6 7 8 9 ?
-	iter_type from (myvector.begin());                     //   ^
-															//         ------>
-	iter_type until (myvector.end());                      //                       ^
-					
-	ft::Myreverse_iterator<iter_type> rev_until (from);     // ^
-															//         <------
-	ft::Myreverse_iterator<iter_type> rev_from (until);
+  	ft::Myreverse_iterator<std::vector<int>::iterator> rev_iterator;
+
+	rev_iterator = myvector.rbegin();
+  	// std::cout << "The fourth element from the end is: " << rev_iterator[3] << '\n';
 
 	// std::cout << "myvector:";
  	// while (rev_from != rev_until)

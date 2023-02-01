@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 19:33:23 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 20:08:07 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,14 @@ namespace  ft
 
 			iterator end(){
 				return (this->_p + this->_size);
+			}
+
+			reverse_iterator rbegin(){
+				return (reverse_iterator(this->end()));
+			}
+
+			reverse_iterator rend(){
+				return (reverse_iterator(this->begin()));
 			}
 
 		//Capacity functions
