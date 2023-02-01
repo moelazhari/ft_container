@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 19:08:47 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 19:21:17 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,11 @@ int main ()
 	ft::Myreverse_iterator<iter_type> rev_until (from);     // ^
 															//         <------
 	ft::Myreverse_iterator<iter_type> rev_from (until);
+
+	// std::cout << "myvector:";
+ 	// while (rev_from != rev_until)
+    // std::cout << ' ' << *rev_from++;
+  	// std::cout << '\n';
 
 
   return 0;

@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 19:18:42 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 19:23:57 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,27 @@ namespace ft
 			}
 			
 			iterator_type base() const{
-				return _base;
+				return this->_base;
 			}
 
 			reference operator*() const{
-				iterator_type tmp = _base;
+				iterator_type tmp = this->_base;
 				return *(--tmp);
+			}
+
+			Myreverse_iterator operator+ (difference_type n) const{
+				return Myreverse_iterator(this->_base - n);
+			}
+
+			Myreverse_iterator& operator++(){
+				--this->_base;
+				return *this;
+			}
+
+			Myreverse_iterator operator++(int){
+				Myreverse_iterator tmp = *this;
+				--this->_base;
+				return tmp;
 			}
 
 		private:
