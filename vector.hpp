@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 20:08:07 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 22:05:51 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,9 +160,12 @@ namespace  ft
 					for (size_type i = 0; i < this->_size; i++)
 						this->_allocator.construct(tmp + i, this->_p[i]);
 					
-					this->clear();
-					this->_allocator.deallocate(this->_p, this->_capacity);
-					
+					if (this->_size)
+					{
+						for (size_type i = 0; i < this->_size; i++)
+							this->_allocator.destroy(this->_p + i);
+						this->_allocator.deallocate(this->_p, this->_capacity);
+					}
 					this->_p = tmp;
 					this->_capacity = n;
 				}
@@ -225,7 +228,7 @@ namespace  ft
 					--n;
 				}
 			}
-			
+
 			void push_back(const value_type& val){
 				if (this->_size == this->_capacity)
 					this->reserve((this->_capacity == 0) ? 2 : this->_capacity * 2);
@@ -411,7 +414,7 @@ namespace  ft
 		private:
 			size_type		_size;
 			size_type 		_capacity;
-			pointer 		_p;
+			pointer			_p;
 			allocator_type	_allocator;
 	};
 }

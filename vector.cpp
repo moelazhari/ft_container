@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 20:16:27 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/01 21:17:12 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,21 +219,23 @@ int main ()
 		std::cout << "fifth is lexicographically greater than or equal to sixth" << std::endl;
 	else
 		std::cout << "fifth is not lexicographically greater than or equal to sixth" << std::endl;
+		
+std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
 
-
-	ft::vector<int> myvector;										
-	for (int i=0; i<10; i++)
+  // reverse_iterator is a class template that provides a bidirectional iterator interface to a container, with the additional ability to iterate in reverse order
+	ft::vector<int> myvector;
+	for (int i = 0; i < 5; i++)
 		myvector.push_back(i);
 
-  	ft::Myreverse_iterator<std::vector<int>::iterator> rev_iterator;
 
-	rev_iterator = myvector.rbegin();
-  	// std::cout << "The fourth element from the end is: " << rev_iterator[3] << '\n';
+	std::cout << "myvector contains:";
+	for (ft::vector<int>::reverse_iterator rit = myvector.rbegin(); rit != myvector.rend(); ++rit)
+		std::cout << ' ' << *rit;
+	std::cout << '\n';
+	
+	
 
-	// std::cout << "myvector:";
- 	// while (rev_from != rev_until)
-    // std::cout << ' ' << *rev_from++;
-  	// std::cout << '\n';
+	
 
 
   return 0;
