@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:31:52 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/02 18:45:46 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/02 18:55:39 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,37 @@ namespace ft {
 			second_type second;
 	};
 	// relational operators overloads
+	template <class T1, class T2>
+	bool operator==(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs){
+		return (lhs.first == rhs.first && lhs.second == rhs.second);
+	}
 
+	template <class T1, class T2>
+	bool operator!=(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs){
+		return !(lhs == rhs);
+	}
+
+	template <class T1, class T2>
+	bool operator<(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs){
+		if (lhs.first < rhs.first || lhs.second < rhs.second)
+			return (true);
+		return (false);
+	}
 	
+	template <class T1, class T2>
+	bool operator<=(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs){
+		return !(rhs < lhs );
+	}
 
+	template <class T1, class T2>
+	bool operator>(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs){
+		return (rhs < lhs);
+	}
+
+	template <class T1, class T2>
+	bool operator>=(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs){
+		return !(lhs < rhs);
+	}
 }
 
 #endif
