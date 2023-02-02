@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 22:05:51 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/02 18:00:20 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ namespace  ft
 				}
 				else
 				{
-					while (this->_size < n)
+					while (this->_size > n)
 						this->pop_back();
 				}
 			}
@@ -262,11 +262,15 @@ namespace  ft
 					++i;
 				}
 
-				this->clear();
-				this->_allocator.deallocate(this->_p, this->_capacity);
+				if (this->_size)
+				{
+					this->clear();
+					this->_allocator.deallocate(this->_p, this->_capacity);
+				}
 				
 				this->_p = tmp;
 				this->_size = i;
+				this->_capacity = this->_size;
 				return (position);
 			}
 			// insert fill
@@ -300,6 +304,7 @@ namespace  ft
 
 				this->_p = tmp;
 				this->_size = i;
+				this->_capacity = this->_size;
 			}
 			// insert range
 			template <class InputIterator>
@@ -338,6 +343,7 @@ namespace  ft
 
 				this->_p = tmp;
 				this->_size = i;
+				this->_capacity = this->_size;
 			}
 			// erase single element
 			iterator erase (iterator position){
