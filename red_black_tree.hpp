@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/07 22:27:23 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/07 22:30:07 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ namespace ft
             node*          _parent;
             bool           _color;
     };
-
+	
 	template < class T, class Alloc = std::allocator<T> >
 	class tree{
 		public:
@@ -134,6 +134,7 @@ namespace ft
 			allocator_type	_alloc;
 	};
 	
+
 }
 
 # endif
