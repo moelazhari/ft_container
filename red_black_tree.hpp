@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/07 22:30:07 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/07 22:34:08 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,19 +112,20 @@ namespace ft
 	template < class T, class Alloc = std::allocator<T> >
 	class tree{
 		public:
+		// member types
 			typedef T						value_type;
 			typedef Alloc					allocator_type;
 			typedef node					node_type;
 			typedef typename node::pointer  node_pointer;
-
+		// constructor
 			tree() : _root(NULL), _alloc(Alloc) {
 				return ;
 			}
-
-			// node_pointer insert(node){
-			// 	node_pointer newNode = _alloc.allocate(1);
+		// member function
+			node_pointer insert(node){
+				node_pointer newNode = _alloc.allocate(1);
 				
-			// }
+			}
 		
 
 
