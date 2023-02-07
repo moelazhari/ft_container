@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/02 18:00:20 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/05 15:54:52 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ namespace  ft
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type last,\
 			const allocator_type& alloc = allocator_type()) : _allocator(alloc)
 			{
-				difference_type n = last - first;
+				difference_type n = last - first; 
 
 				this->_size = n;
 				this->_capacity = this->_size * 2;
@@ -103,16 +103,16 @@ namespace  ft
 				this->_p = this->_allocator.allocate(this->_capacity);
 				
 				for (size_type i = 0; i < this->_size; i++)
-					this->_allocator.construct(this->_p + i, x._p[i]);
+					this->_p[i] = x._p[i];
 				return (*this);
 			}
 		// Iterators functions
 			iterator begin(){
-				return (this->_p);
+				return iterator(this->_p);
 			}
 
 			iterator end(){
-				return (this->_p + this->_size);
+				return iterator(this->_p + this->_size);
 			}
 
 			reverse_iterator rbegin(){
@@ -438,7 +438,7 @@ template <class T, class Alloc>
   }
 
 template <class T, class Alloc>
-  bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs){
+  bool operator!= (const ft::vector<T, Alloc>& lhs, const ft::vector<T, Alloc>& rhs){
 	return (!(lhs == rhs));
   }
 

@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 22:03:24 by mazhari           #+#    #+#             */
-/*   Updated: 2023/01/29 15:58:08 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/07 21:59:52 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,34 @@ namespace ft
 {
     // Iterator traits
     template <class T>
-    struct iterator_traits
-    {
-        typedef typename T::iterator_category iterator_category;
-        typedef typename T::value_type        value_type;
-        typedef typename T::difference_type   difference_type;
-        typedef typename T::pointer           pointer;
-        typedef typename T::reference         reference;
+    class iterator_traits {
+        public:
+            typedef typename T::iterator_category iterator_category;
+            typedef typename T::value_type        value_type;
+            typedef typename T::difference_type   difference_type;
+            typedef typename T::pointer           pointer;
+            typedef typename T::reference         reference;
     };
     // Specialization for Iterator_traits pointers
     template <typename T>
-    struct iterator_traits<T*> {
-        typedef T                               value_type;
-        typedef ptrdiff_t                       difference_type;
-        typedef std::random_access_iterator_tag iterator_category;
-        typedef T*                              pointer;
-        typedef T&                              reference;
+    class iterator_traits<T*> {
+        public:
+            typedef T                               value_type;
+            typedef ptrdiff_t                       difference_type;
+            typedef std::random_access_iterator_tag iterator_category;
+            typedef T*                              pointer;
+            typedef T&                              reference;
     };
     // Specialization for Iterator_traits const pointers
     template <typename T>
-    struct iterator_traits<const T*> {
-        typedef T                          value_type;
-        typedef ptrdiff_t                  difference_type;
-        typedef std::random_access_iterator_tag iterator_category;
-        typedef const T*                   pointer;
-        typedef const T&                   reference;
+    class iterator_traits<const T*> {
+        public:
+            typedef T                          value_type;
+            typedef ptrdiff_t                  difference_type;
+            typedef std::random_access_iterator_tag iterator_category;
+            typedef const T*                   pointer;
+            typedef const T&                   reference;
     };
-
 
     // Enable_if
     template <bool B, class T = void>
@@ -54,7 +55,6 @@ namespace ft
     struct enable_if<true, T> { 
         typedef T type;
     };
-
 
     // Is_integral
     template <class T>

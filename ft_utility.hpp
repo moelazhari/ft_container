@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tf_utility.hpp                                     :+:      :+:    :+:   */
+/*   ft_utility.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:31:52 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/02 18:55:39 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/02 19:10:54 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ namespace ft {
 
 	template <class T1, class T2> 
 	struct pair{
-		public:
 		// member types
 			typedef T1 first_type;
 			typedef T2 second_type;
+		// attributes
+			first_type  first;
+			second_type second;
 		// constructors
 			// default constructor
 			pair(): first(T1()), second(T2()){
@@ -41,11 +43,6 @@ namespace ft {
 				this->second = pr.second;
 				return *this;
 			}
-			
-		// attributes
-		private:
-			first_type  first;
-			second_type second;
 	};
 	// relational operators overloads
 	template <class T1, class T2>

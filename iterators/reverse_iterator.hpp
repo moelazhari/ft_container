@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 22:50:23 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 22:04:35 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/07 21:42:09 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ namespace ft
 			}
 			// copy constructor
 			template <class Iter>
-			Myreverse_iterator (const Myreverse_iterator<Iter>& rev_it) : _base(rev_it._base()){
+			Myreverse_iterator (const Myreverse_iterator<Iter>& rev_it) : _base(rev_it.base()){
 				return ;
 			}
 			
@@ -49,8 +49,8 @@ namespace ft
 			}
 
 			reference operator*() const{
-				iterator_type tmp = this->_base;
-				return *(--tmp);
+				iterator_type tmp(base());
+				return *(--tmp); 
 			}
 
 			Myreverse_iterator operator+ (difference_type n) const{

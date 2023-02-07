@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 23:49:20 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/01 00:01:06 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:32:55 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,8 @@ namespace ft
 
             Myiterator(Myiterator const & src) {
                 *this = src;
-                return ;
             }
-            
-            //destructor
-            ~Myiterator() {
-                return ;
-            }
-            
             //operator overloads
-            
             bool operator==(Myiterator const & rhs) const {
                 return this->_ptr == rhs._ptr;
             }
