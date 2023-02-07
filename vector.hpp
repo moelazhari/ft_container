@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/05 15:54:52 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/07 23:54:55 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,6 +305,7 @@ namespace  ft
 				this->_p = tmp;
 				this->_size = i;
 				this->_capacity = this->_size;
+				position = this->begin();
 			}
 			// insert range
 			template <class InputIterator>
@@ -347,58 +348,26 @@ namespace  ft
 			}
 			// erase single element
 			iterator erase (iterator position){
-				
-				pointer tmp = this->_allocator.allocate(this->_capacity);
-				iterator it = this->begin();
-				size_type i = 0;
-
-				while (it != position)
-				{
-					this->_allocator.construct(tmp + i, *it);
-					++it;
-					++i;
-				}
-				++it;
+				difference_type ps = this->begin() - position;
+	
+				pointer ptr = this->_p + ps;
+				this->_allocator.destroy(ptr);
+				this->_size--;
+		
+				iterator it(ptr);
+						
 				while (it != this->end())
 				{
-					this->_allocator.construct(tmp + i, *it);
+					*it = *(it + 1);
 					++it;
-					++i;
 				}
 
-				this->clear();
-				this->_allocator.deallocate(this->_p, this->_capacity);
-				
-				this->_p = tmp;
-				this->_size = i;
-				return (position);
+				return (ptr);
 			}
-			// erase range
+
+			//erase range
 			iterator erase (iterator first, iterator last){
-				pointer tmp = this->_allocator.allocate(this->_capacity);
-				iterator it = this->begin();
-				size_type i = 0;
-
-				while (it != first)
-				{
-					this->_allocator.construct(tmp + i, *it);
-					++it;
-					++i;
-				}
-				while (it != last)
-					++it;
-				while (it != this->end())
-				{
-					this->_allocator.construct(tmp + i, *it);
-					++it;
-					++i;
-				}
-
-				this->clear();
-				this->_allocator.deallocate(this->_p, this->_capacity);
-				
-				this->_p = tmp;
-				this->_size = i;
+				// to do 
 				return (first);
 			}
 

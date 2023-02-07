@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/07 22:11:09 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/07 23:53:40 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,21 +226,48 @@ int main (){
 // std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
 
   // reverse_iterator is a class template that provides a bidirectional iterator interface to a container, with the additional ability to iterate in reverse order
-	ft::vector<int> myvector;
-	for (int i = 0; i < 5; i++)
-		myvector.push_back(i);
+	// ft::vector<int> myvector;
+	// for (int i = 0; i < 5; i++)
+	// 	myvector.push_back(i);
 
 
-	std::cout << "myvector contains:";
-	for (ft::vector<int>::reverse_iterator rit = myvector.rbegin(); rit != myvector.rend(); ++rit)
-		std::cout << ' ' << *rit;
-	std::cout << '\n';
+	// std::cout << "myvector contains:";
+	// for (ft::vector<int>::reverse_iterator rit = myvector.rbegin(); rit != myvector.rend(); ++rit)
+	// 	std::cout << ' ' << *rit;
+	// std::cout << '\n';
 
-	std::map<int, std::string> a;
+	// std::map<int, std::string> a;
  
     // allocate space for five ints
 
 	// assign some values:
 
-  return 0;
+	ft::vector<int> a(2, 2);
+
+	ft::vector<int>::iterator it = a.begin();
+
+	
+	for (ft::vector<int>::iterator it = a.begin(); it != a.end(); ++it){
+		std::cout << ' ' << *it;
+	}
+	std::cout << std::endl;
+	it = a.erase(it);
+
+	while (it != a.end()){
+		std::cout << ' ' << *it++;
+	}
+	// erase the first 3 elements:
+// 	ft::vector<int> a(6, 6);
+
+// 	for (ft::vector<int>::iterator it = a.begin(); it != a.end(); ++it){
+// 		std::cout << ' ' << *it;
+// 	}
+// 	std::cout << std::endl;
+// 	a.erase(a.begin(), a.begin() + 3);
+// while (it != a.end()){
+// 	// 	std::cout << ' ' << *it++;
+// 	// }
+	
+	
+  	return 0;
 }

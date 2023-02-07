@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/07 22:34:08 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/07 22:43:58 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,11 @@ namespace ft
 			}
 
         private:
-            value_type     _data;
-            node*          _left;
-            node*          _right;
-            node*          _parent;
-            bool           _color;
+            value_type	_data;
+            pointer		_left;
+            pointer		_right;
+            pointer		_parent;
+            bool		_color;
     };
 	
 	template < class T, class Alloc = std::allocator<T> >
@@ -116,14 +116,16 @@ namespace ft
 			typedef T						value_type;
 			typedef Alloc					allocator_type;
 			typedef node					node_type;
+			typedef size_t					size_type;
 			typedef typename node::pointer  node_pointer;
 		// constructor
-			tree() : _root(NULL), _alloc(Alloc) {
+			tree() : _root(NULL), _size(0), _alloc(Alloc) {
 				return ;
 			}
 		// member function
-			node_pointer insert(node){
-				node_pointer newNode = _alloc.allocate(1);
+			node_pointer insert(value_type data){
+				this->_size++;
+				node_pointer newNode = new node_type(data);
 				
 			}
 		
@@ -132,6 +134,7 @@ namespace ft
 
 		private:
 			node_pointer	_root;
+			size_type		_size;
 			allocator_type	_alloc;
 	};
 	
