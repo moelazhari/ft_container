@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/07 23:54:55 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/08 16:10:45 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,26 +348,45 @@ namespace  ft
 			}
 			// erase single element
 			iterator erase (iterator position){
-				difference_type ps = this->begin() - position;
+				
+				iterator it(position);
 	
-				pointer ptr = this->_p + ps;
-				this->_allocator.destroy(ptr);
-				this->_size--;
-		
-				iterator it(ptr);
-						
 				while (it != this->end())
 				{
 					*it = *(it + 1);
 					++it;
 				}
 
-				return (ptr);
+				difference_type ps = position - this->begin();
+				this->_allocator.destroy(this->_p + ps);
+				--this->_size;
+
+				return (position);
 			}
 
 			//erase range
 			iterator erase (iterator first, iterator last){
-				// to do 
+				
+				difference_type ps = first - this->begin();
+				difference_type n = last - first;
+				
+				iterator it(first);
+
+				while(last != this->end())
+				{
+					*it = *last;
+					++it;
+					++last;
+				}
+
+				this->_size -= n;
+				while (n > 0)
+				{
+					this->_allocator.destroy(this->_p + ps);
+					--n;
+					++ps;
+				}
+
 				return (first);
 			}
 

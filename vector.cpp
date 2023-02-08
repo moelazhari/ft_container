@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/07 23:53:40 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/08 16:05:36 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,32 +242,36 @@ int main (){
 
 	// assign some values:
 
-	ft::vector<int> a(2, 2);
+	// ft::vector<int> a(2, 2);
 
-	ft::vector<int>::iterator it = a.begin();
+	// ft::vector<int>::iterator it = a.begin();
 
 	
+	// for (ft::vector<int>::iterator it = a.begin(); it != a.end(); ++it){
+	// 	std::cout << ' ' << *it;
+	// }
+	// std::cout << std::endl;
+	// it = a.erase(it);
+
+	// while (it != a.end()){
+	// 	std::cout << ' ' << *it++;
+	// }
+	//erase the first 3 elements:
+	ft::vector<int> a;
+
+	for (int i = 1; i < 6; i++)
+		a.push_back(i);
+
 	for (ft::vector<int>::iterator it = a.begin(); it != a.end(); ++it){
 		std::cout << ' ' << *it;
 	}
 	std::cout << std::endl;
-	it = a.erase(it);
-
-	while (it != a.end()){
-		std::cout << ' ' << *it++;
+	a.erase(a.begin(), a.begin() + 3);
+	for (ft::vector<int>::iterator it = a.begin(); it != a.end(); ++it){
+		std::cout << ' ' << *it;
 	}
-	// erase the first 3 elements:
-// 	ft::vector<int> a(6, 6);
+	std::cout << std::endl;
 
-// 	for (ft::vector<int>::iterator it = a.begin(); it != a.end(); ++it){
-// 		std::cout << ' ' << *it;
-// 	}
-// 	std::cout << std::endl;
-// 	a.erase(a.begin(), a.begin() + 3);
-// while (it != a.end()){
-// 	// 	std::cout << ' ' << *it++;
-// 	// }
-	
 	
   	return 0;
 }
