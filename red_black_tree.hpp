@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/10 17:25:27 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/10 17:26:50 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,31 +159,8 @@ namespace ft
 						}
 					}
 				}
-				this->fixTree(newNode);
+				// this->fixTree(newNode);
 				return (newNode);
-			}
-			
-
-			void rotateRight(node_pointer node){
-				node_pointer left = node->getLeft();
-				node_pointer parent = node->getParent();
-				node_pointer right = left->getRight();
-
-
-				left->setParent(parent);
-				if (parent){
-					if (node == parent->getLeft())
-						parent->setLeft(left);
-					else
-						parent->setRight(left);
-				}
-				else
-					this->_root = left;
-				left->setRight(node);
-				node->setParent(left);
-				node->setLeft(right);
-				if (right)
-					right->setParent(node);
 			}
 			
 			void printInOrder(node_pointer node){
