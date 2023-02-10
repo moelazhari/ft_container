@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/10 17:29:14 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/10 19:45:31 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,33 @@ namespace ft
     #define	RED 0
     #define	BLACK 1
 
-    template <class T>
+    template <class T, class Alloc = std::allocator< T > >
     class node
     {
         public:
-            typedef T 		value_type;
-			typedef node* 	pointer;
+            typedef T 							value_type;
+			typedef T*							pointer;
+			typedef node*						node_pointer;
+			typedef Alloc						allocator_type;
 
-            node(value_type data, node* parent = NULL)
-            {
-                this->_data  	= data;
-                this->_left  	= NULL;
-                this->_right 	= NULL;
-                this->_parent	= parent;
-                this->_color 	= RED;
-            }
+            node(value_type data, node* parent = NULL) : _left(NULL), _right(NULL), _parent(parent), _color(RED), _alloc(allocator_type()){
+				this->_data = this->_alloc.allocate(1);
+				this->_alloc.construct(this->_data, data);
+			}
 
-			pointer getGrandParent(){
+			~node(){
+				this->_alloc.destroy(this->_data);
+				this->_alloc.deallocate(this->_data, 1);
+			}
+
+			node_pointer getGrandParent(){
 				if (!this->_parent)
 					return (NULL);
 				return (this->_parent->_parent);
 			}
 
-			pointer getUncle(){
-				pointer grandparent = this->getGrandParent();
+			node_pointer getUncle(){
+				node_pointer grandparent = this->getGrandParent();
 				if (!grandparent)
 					return (NULL);
 				if (this->_parent == grandparent->_left)
@@ -55,7 +58,7 @@ namespace ft
 					return (grandparent->_left);
 			}
 
-			pointer getSibling(){
+			node_pointer getSibling(){
 				if (this->_parent == NULL)
 					return (NULL);
 				if (this == this->_parent->_left)
@@ -64,35 +67,35 @@ namespace ft
 					return (this->_parent->_left);
 			}
 			// setrs and geters
-			value_type getData(){
+			pointer getData(){
 				return (this->_data);
 			}
 			
-			void setData(value_type data){
-				this->_data = data;
-			}
+			// void setData(value_type data){
+			// 	this->_data = data;
+			// }
 
-			pointer getLeft(){
+			node_pointer getLeft(){
 				return (this->_left);
 			}
 			
-			void setLeft(pointer node){
+			void setLeft(node_pointer node){
 				this->_left = node;
 			}
 
-			pointer getRight(){
+			node_pointer getRight(){
 				return (this->_right);
 			}
 
-			void setRight(pointer node){
+			void setRight(node_pointer node){
 				this->_right = node;
 			}
 
-			pointer getParent(){
+			node_pointer getParent(){
 				return (this->_parent);
 			}
 			
-			void setParent(pointer node){
+			void setParent(node_pointer node){
 				this->_parent = node;
 			}
 			
@@ -105,22 +108,23 @@ namespace ft
 			}
 
         private:
-            value_type	_data;
-            pointer		_left;
-            pointer		_right;
-            pointer		_parent;
-            bool		_color;
+            pointer					_data;
+            node_pointer			_left;
+            node_pointer			_right;
+            node_pointer			_parent;
+            bool					_color;
+			allocator_type 			_alloc;
     };
 
-	template <class T>
+	template <class T, class Alloc = std::allocator<T> >
 	class tree{
 		public:
 		// member types
-			typedef T							value_type;
-			typedef ft::node<T>					node_type;
-			typedef typename node_type::pointer node_pointer;
-			typedef std::allocator< node_type >	allocator_type;
-			typedef size_t						size_type;
+			typedef T									value_type;
+			typedef ft::node<T, Alloc>					node_type;
+			typedef typename node_type::node_pointer	node_pointer;
+			typedef std::allocator< node_type >			allocator_type;
+			typedef size_t								size_type;
 		// constructor
 			tree() : _root(NULL), _size(0), _alloc(allocator_type()) {
 				return ;
@@ -142,7 +146,7 @@ namespace ft
 				while (1)
 				{
 					parent = curnt;
-					if (newNode->getData() < curnt->getData()){
+					if (*(newNode->getData()) < *(curnt->getData())){
 						curnt = parent->getLeft();
 						if (!curnt){
 							newNode->setParent(parent);
@@ -253,7 +257,7 @@ namespace ft
 				if (!node)
 					return ;
 				printInOrder(node->getLeft());
-				std::cout << node->getData() << " ";
+				std::cout << *(node->getData()) << " ";
 				printInOrder(node->getRight());
 			}
 
@@ -273,7 +277,7 @@ namespace ft
 				std::cout << std::endl;
 				for (int i = COUNT; i < space; i++)
 					std::cout << " ";
-				std::cout << node->getData() << (node->getColor() ? ":BLACK" : ":RED") << "\n";
+				std::cout << *(node->getData()) << (node->getColor() ? ":BLACK" : ":RED") << "\n";
 			
 				// Process left child
 				printLevels(node->getLeft(), space);
