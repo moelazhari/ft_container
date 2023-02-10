@@ -1,15 +1,24 @@
 #include <iostream>
-#include <queue>
+#include "red_black_tree.hpp"
 
 
  
 int main() {
 
 
-  // tree.preOrderTraversal(tree.root);
+  ft::tree<int> tree;
+
+  tree.insert(6);
+  tree.insert(2);
+  tree.insert(9);
+  tree.insert(10);
+  tree.insert(100);
+  tree.insert(-6);
+  tree.insert(65111);
 
 
-  // std::cout << tree.root->data << std::endl;
+  tree.printLevels(tree.getRoot(), 0);
+
  
   return 0;
 }
