@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/10 16:58:53 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/10 17:25:27 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,70 +162,7 @@ namespace ft
 				this->fixTree(newNode);
 				return (newNode);
 			}
-
-			void fixTree(node_pointer node){
-				if (node == this->_root){
-					node->setColor(BLACK);
-					return ;
-				}
-				
-				node_pointer parent = node->getParent();
-				node_pointer uncle = node->getUncle();
-				node_pointer grandParent = node->getGrandParent();
-
-				if (parent->getColor() == RED &&  uncle && uncle->getColor() == RED)
-				{
-					parent->setColor(BLACK);
-					uncle->setColor(BLACK);
-					grandParent->setColor(RED);
-					this->fixTree(grandParent);
-				}
-				else if (parent->getColor() == RED && (!uncle || uncle->getColor() == RED) ) {
-					if (node == parent->getLeft() && parent == grandParent->getLeft()){
-						this->rotateRight(grandParent);
-						parent->setColor(BLACK);
-						grandParent->setColor(RED);
-					}
-					else if (node == parent->getRight() && parent == grandParent->getLeft()){
-						this->rotateLeft(parent);
-						this->rotateRight(grandParent);
-						node->setColor(BLACK);
-						grandParent->setColor(RED);
-						}
-					else if (node == parent->getRight() && parent == grandParent->getRight()){
-						this->rotateLeft(grandParent);
-						parent->setColor(BLACK);
-						grandParent->setColor(RED);
-					}
-					else if (node == parent->getLeft() && parent == grandParent->getRight()){
-						this->rotateRight(parent);
-						this->rotateLeft(grandParent);
-						node->setColor(BLACK);
-						grandParent->setColor(RED);
-					}
-				}
-			}
-
-			void rotateLeft(node_pointer node){
-				node_pointer right = node->getRight();
-				node_pointer parent = node->getParent();
-				node_pointer left = right->getLeft();
-
-				right->setParent(parent);
-				if (parent){
-					if (node == parent->getLeft())
-						parent->setLeft(right);
-					else
-						parent->setRight(right);
-				}
-				else
-					this->_root = right;
-				right->setLeft(node);
-				node->setParent(right);
-				node->setRight(left);
-				if (left)
-					left->setParent(node);
-			}
+			
 
 			void rotateRight(node_pointer node){
 				node_pointer left = node->getLeft();
@@ -248,7 +185,7 @@ namespace ft
 				if (right)
 					right->setParent(node);
 			}
-
+			
 			void printInOrder(node_pointer node){
 				if (!node)
 					return ;
