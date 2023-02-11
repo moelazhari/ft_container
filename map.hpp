@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:05:58 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/11 20:59:43 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:02:09 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,22 @@ template < class Key, class T,
 			
 				typedef size_t									size_type;
 			//constructors
-	
+				explicit map (const key_compare& comp = key_compare(),
+							const allocator_type& alloc = allocator_type()): _size(0), _tree(comp, alloc){
+								return ;
+							};
+				// template <class InputIterator>
+				// map (InputIterator first, InputIterator last,
+				// 	const key_compare& comp = key_compare(),
+				// 	const allocator_type& alloc = allocator_type()): _size(0), _tree(comp, alloc){
+						
+		
+				// 	};
+
+				map (const map& x): _size(0), _tree(NULL){
+					*this = x;
+					return ;
+				};
 				
 
 			
