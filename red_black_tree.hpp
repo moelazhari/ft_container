@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/10 19:45:31 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/11 15:10:57 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ namespace ft
 			typedef Alloc						allocator_type;
 
             node(value_type data, node* parent = NULL) : _left(NULL), _right(NULL), _parent(parent), _color(RED), _alloc(allocator_type()){
-				this->_data = this->_alloc.allocate(1);
-				this->_alloc.construct(this->_data, data);
+				this->setData(data);
 			}
 
 			~node(){
@@ -71,9 +70,10 @@ namespace ft
 				return (this->_data);
 			}
 			
-			// void setData(value_type data){
-			// 	this->_data = data;
-			// }
+			void setData(value_type data){
+				this->_data = this->_alloc.allocate(1);
+				this->_alloc.construct(this->_data, data);
+			}
 
 			node_pointer getLeft(){
 				return (this->_left);
@@ -167,47 +167,48 @@ namespace ft
 				return (newNode);
 			}
 
-				void fixTree(node_pointer node){
-				if (node == this->_root){
-					node->setColor(BLACK);
-					return ;
-				}
-				
-				node_pointer parent = node->getParent();
-				node_pointer uncle = node->getUncle();
-				node_pointer grandParent = node->getGrandParent();
+			void fixTree(node_pointer node){
 
-				if (parent->getColor() == RED &&  uncle && uncle->getColor() == RED)
-				{
+			if (node == this->_root){
+				node->setColor(BLACK);
+				return ;
+			}
+			
+			node_pointer parent = node->getParent();
+			node_pointer uncle = node->getUncle();
+			node_pointer grandParent = node->getGrandParent();
+
+			if (parent->getColor() == RED &&  uncle && uncle->getColor() == RED)
+			{
+				parent->setColor(BLACK);
+				uncle->setColor(BLACK);
+				grandParent->setColor(RED);
+				this->fixTree(grandParent);
+			}
+			else if (parent->getColor() == RED && (!uncle || uncle->getColor() == RED) ) {
+				if (node == parent->getLeft() && parent == grandParent->getLeft()){
+					this->rotateRight(grandParent);
 					parent->setColor(BLACK);
-					uncle->setColor(BLACK);
 					grandParent->setColor(RED);
-					this->fixTree(grandParent);
 				}
-				else if (parent->getColor() == RED && (!uncle || uncle->getColor() == RED) ) {
-					if (node == parent->getLeft() && parent == grandParent->getLeft()){
-						this->rotateRight(grandParent);
-						parent->setColor(BLACK);
-						grandParent->setColor(RED);
+				else if (node == parent->getRight() && parent == grandParent->getLeft()){
+					this->rotateLeft(parent);
+					this->rotateRight(grandParent);
+					node->setColor(BLACK);
+					grandParent->setColor(RED);
 					}
-					else if (node == parent->getRight() && parent == grandParent->getLeft()){
-						this->rotateLeft(parent);
-						this->rotateRight(grandParent);
-						node->setColor(BLACK);
-						grandParent->setColor(RED);
-						}
-					else if (node == parent->getRight() && parent == grandParent->getRight()){
-						this->rotateLeft(grandParent);
-						parent->setColor(BLACK);
-						grandParent->setColor(RED);
-					}
-					else if (node == parent->getLeft() && parent == grandParent->getRight()){
-						this->rotateRight(parent);
-						this->rotateLeft(grandParent);
-						node->setColor(BLACK);
-						grandParent->setColor(RED);
-					}
+				else if (node == parent->getRight() && parent == grandParent->getRight()){
+					this->rotateLeft(grandParent);
+					parent->setColor(BLACK);
+					grandParent->setColor(RED);
 				}
+				else if (node == parent->getLeft() && parent == grandParent->getRight()){
+					this->rotateRight(parent);
+					this->rotateLeft(grandParent);
+					node->setColor(BLACK);
+					grandParent->setColor(RED);
+				}
+			}
 			}
 
 			void rotateLeft(node_pointer node){
@@ -253,7 +254,7 @@ namespace ft
 					right->setParent(node);
 			}
 			
-			void printInOrder(node_pointer node){
+			void printInOrder(node_pointer node){  
 				if (!node)
 					return ;
 				printInOrder(node->getLeft());
@@ -292,7 +293,6 @@ namespace ft
 			size_type		_size;
 			allocator_type	_alloc;
 	};
-	
 
 }
 
