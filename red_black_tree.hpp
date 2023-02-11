@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/11 15:10:57 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:38:38 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,17 +116,19 @@ namespace ft
 			allocator_type 			_alloc;
     };
 
-	template <class T, class Alloc = std::allocator<T> >
+	template <class T, class C, class Alloc = std::allocator<T> >
 	class tree{
 		public:
 		// member types
 			typedef T									value_type;
 			typedef ft::node<T, Alloc>					node_type;
 			typedef typename node_type::node_pointer	node_pointer;
+			typedef C									key_compare;
 			typedef std::allocator< node_type >			allocator_type;
 			typedef size_t								size_type;
 		// constructor
-			tree() : _root(NULL), _size(0), _alloc(allocator_type()) {
+			tree(const key_compare& comp = key_compare(),
+				const allocator_type& alloc = allocator_type()) : _root(NULL), _size(0), _comp(comp) ,_alloc(alloc) {
 				return ;
 			}
 		// member function
@@ -146,7 +148,7 @@ namespace ft
 				while (1)
 				{
 					parent = curnt;
-					if (*(newNode->getData()) < *(curnt->getData())){
+					if (this->_comp(*(newNode->getData()), *(curnt->getData()))){
 						curnt = parent->getLeft();
 						if (!curnt){
 							newNode->setParent(parent);
@@ -154,7 +156,7 @@ namespace ft
 							break ;
 						}
 					}
-					else{
+					else if (this->_comp(*(curnt->getData()), *(newNode->getData()))){
 						curnt = parent->getRight();
 						if (!curnt){
 							newNode->setParent(parent);
@@ -162,6 +164,8 @@ namespace ft
 							break ;
 						}
 					}
+					else
+						return (NULL);
 				}
 				this->fixTree(newNode);
 				return (newNode);
@@ -185,7 +189,7 @@ namespace ft
 				grandParent->setColor(RED);
 				this->fixTree(grandParent);
 			}
-			else if (parent->getColor() == RED && (!uncle || uncle->getColor() == RED) ) {
+			else if (parent->getColor() == RED && (!uncle || uncle->getColor() == BLACK) ) {
 				if (node == parent->getLeft() && parent == grandParent->getLeft()){
 					this->rotateRight(grandParent);
 					parent->setColor(BLACK);
@@ -291,6 +295,7 @@ namespace ft
 		private:
 			node_pointer	_root;
 			size_type		_size;
+			key_compare		_comp;
 			allocator_type	_alloc;
 	};
 

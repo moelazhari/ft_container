@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:40 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/09 20:53:21 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:58:58 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Foo
 
   
 int main (){	
-  //constructors used in the same order as described above:
+//   constructors used in the same order as described above:
   ft::vector<int> first;                                // empty vector of ints
   ft::vector<int> second (4,100);                       // four ints with value 100
   ft::vector<int> third (second.begin(),second.end());  // iterating through second
@@ -222,8 +222,6 @@ int main (){
 		std::cout << "fifth is lexicographically greater than or equal to sixth" << std::endl;
 	else
 		std::cout << "fifth is not lexicographically greater than or equal to sixth" << std::endl;
-		
-std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
 
   	return 0;
 }

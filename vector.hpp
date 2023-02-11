@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/09 20:56:41 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:57:29 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <memory>
 #include <iostream>
-#include "./iterators/iterator.hpp"
+#include "./iterators/vector_iterator.hpp"
 #include "./iterators/reverse_iterator.hpp"
 #include "./ft_type_traits.hpp"
 #include "./ft_algorithm.hpp"
@@ -35,8 +35,8 @@ namespace  ft
 			typedef typename allocator_type::pointer         				pointer; 
 			typedef typename allocator_type::const_pointer   				const_pointer;
 			// Iterators	
-			typedef	Myiterator<value_type>									iterator;
-			typedef	Myiterator<const value_type>							const_iterator;
+			typedef	vectorIterator<value_type>								iterator;
+			typedef	vectorIterator<const value_type>						const_iterator;
 			// Reverse iterators
 			typedef typename ft::Myreverse_iterator<iterator>				reverse_iterator;
 			typedef typename ft::Myreverse_iterator<const_iterator>			const_reverse_iterator;

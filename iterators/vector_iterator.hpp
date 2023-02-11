@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator.hpp                                       :+:      :+:    :+:   */
+/*   vector_iterator.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 23:49:20 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/03 19:32:55 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:58:24 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 namespace ft
 {
     template <typename T>
-    class Myiterator
+    class vectorIterator
     {
         //member types
         public:
@@ -27,23 +27,23 @@ namespace ft
             typedef typename std::random_access_iterator_tag   iterator_category;
 
             //constructors
-            Myiterator() : _ptr(NULL) {
+            vectorIterator() : _ptr(NULL) {
                 return ;
             }
             
-            Myiterator(pointer ptr) : _ptr(ptr) {
+            vectorIterator(pointer ptr) : _ptr(ptr) {
                 return ;
             }
 
-            Myiterator(Myiterator const & src) {
+            vectorIterator(vectorIterator const & src) {
                 *this = src;
             }
             //operator overloads
-            bool operator==(Myiterator const & rhs) const {
+            bool operator==(vectorIterator const & rhs) const {
                 return this->_ptr == rhs._ptr;
             }
             
-            bool operator!=(Myiterator const & rhs) const {
+            bool operator!=(vectorIterator const & rhs) const {
                 return this->_ptr != rhs._ptr;
             }
 
@@ -55,68 +55,68 @@ namespace ft
                 return this->_ptr;
             }
 
-            Myiterator & operator=(Myiterator const & rhs) {
+            vectorIterator & operator=(vectorIterator const & rhs) {
                 if (this != &rhs)
                     this->_ptr = rhs._ptr;
                 return *this;
             }
             
-            Myiterator &operator++() {
+            vectorIterator &operator++() {
                 this->_ptr++;
                 return *this;
             }
             
-            Myiterator operator++(int) {
-                Myiterator tmp(*this);
+            vectorIterator operator++(int) {
+                vectorIterator tmp(*this);
                 this->_ptr++;
                 return tmp;
             }
             
-            Myiterator &operator--() {
+            vectorIterator &operator--() {
                 this->_ptr--;
                 return *this;
             }
 
-            Myiterator operator--(int) {
-                Myiterator tmp(*this);
+            vectorIterator operator--(int) {
+                vectorIterator tmp(*this);
                 this->_ptr--;
                 return tmp;
             }
 
-            Myiterator operator+(difference_type n) const {
-                return Myiterator(this->_ptr + n);
+            vectorIterator operator+(difference_type n) const {
+                return vectorIterator(this->_ptr + n);
             }
 
-            Myiterator operator-(difference_type n) const {
-                return Myiterator(this->_ptr - n);
+            vectorIterator operator-(difference_type n) const {
+                return vectorIterator(this->_ptr - n);
             }
 
-            difference_type operator -(const Myiterator &rhs) {
+            difference_type operator -(const vectorIterator &rhs) {
                 return this->_ptr - rhs._ptr;
             }
 
-            bool operator<(const Myiterator &rhs) {
+            bool operator<(const vectorIterator &rhs) {
                 return this->_ptr < rhs._ptr;
             }
 
-            bool operator>(const Myiterator &rhs) {
+            bool operator>(const vectorIterator &rhs) {
                 return this->_ptr > rhs._ptr;
             }
 
-            bool operator<=(const Myiterator &rhs) {
+            bool operator<=(const vectorIterator &rhs) {
                 return this->_ptr <= rhs._ptr;
             }
 
-            bool operator>=(const Myiterator &rhs) {
+            bool operator>=(const vectorIterator &rhs) {
                 return this->_ptr >= rhs._ptr;
             }
 
-            Myiterator &operator+=(difference_type n) {
+            vectorIterator &operator+=(difference_type n) {
                 this->_ptr += n;
                 return *this;
             }
 
-            Myiterator &operator-=(difference_type n) {
+            vectorIterator &operator-=(difference_type n) {
                 this->_ptr -= n;
                 return *this;
             }
