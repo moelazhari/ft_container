@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "__node_handle": "cpp",
+        "__hash_table": "cpp",
+        "__tree": "cpp",
+        "functional": "cpp",
+        "map": "cpp",
+        "unordered_map": "cpp",
+        "iostream": "cpp"
+    }
+}

@@ -16,9 +16,14 @@ int main() {
   tree.insert(-69);
   tree.insert(5451);
   tree.insert(119);
-  tree.insert(-9841);
+  tree.insert(-984);
 
   tree.printLevels(tree.getRoot(), 0);
+  tree.printInOrder(tree.getRoot());
+
+  std::cout<< "max :" << *(tree.max(tree.getRoot())->getData());
+
+  // std::cout << "successor :" << *(tree.getSuccessor(tree[119])->getData()) << std::endl;
 
 
  

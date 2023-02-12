@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:34:48 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/11 20:57:29 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/12 18:41:58 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,7 +272,6 @@ namespace  ft
 				this->_capacity = this->_size;
 				return (position);
 			}
-			
 			// insert fill
 			void insert (iterator position, size_type n, const value_type& val){
 				pointer tmp = this->_allocator.allocate(this->_capacity + n);
