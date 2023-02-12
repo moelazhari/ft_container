@@ -21,9 +21,11 @@ int main() {
   tree.printLevels(tree.getRoot(), 0);
   tree.printInOrder(tree.getRoot());
 
-  std::cout<< "max :" << *(tree.max(tree.getRoot())->getData());
+  // std::cout<< "max :" << *(tree.max(tree.getRoot())->getData());
+  // std::cout << *(tree[6]->getData()) << std::endl;
 
-  // std::cout << "successor :" << *(tree.getSuccessor(tree[119])->getData()) << std::endl;
+  std::cout << "successor :" << *(tree.getSuccessor(tree[6])->getData()) << std::endl;
+
 
 
  

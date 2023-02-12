@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/12 21:55:55 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/12 21:59:18 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,8 +335,21 @@ namespace ft
 				return node;
 			}
 
-			// operator overloadings
-
+			// operator overloades
+			node_pointer operator[](const key_type& key){
+				node_pointer node = this->_root;
+				while (node != NULL)
+				{
+					if (key == *(node->getData()))
+						return node;
+					else if (key < *(node->getData()))
+						node = node->getLeft();
+					else
+						node = node->getRight();
+				}
+				return NULL;
+			}
+			
 			void printInOrder(node_pointer node){  
 				if (!node)
 					return ;
