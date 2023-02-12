@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/12 22:50:32 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/12 22:53:32 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,27 +229,15 @@ namespace ft
 					return (node->getParent());
 				}
 			}
-			// node_pointer getSuccessor(node_pointer node) {
-			// 	node_pointer tmp;
-			// 	node_pointer parent = node->getParent();
+			node_pointer getSuccessor(node_pointer node) {
+				node_pointer tmp;
+				node_pointer parent = node->getParent();
 
-			// 	if (node == this->max(this->_root))
-			// 		return NULL;
-			// 	if (node->getRight())
-			// 	{
-			// 		tmp = node->getRight();
-			// 		while (tmp->getLeft())
-			// 			tmp = tmp->getLeft();
-			// 		return tmp;
-			// 	}
-			// 	else if (!node->getRight() && node == parent->getRight()){
-					
-			// 	}
-			// 	else {
-			// 		std::cout << "69" << std::endl;
-			// 		return NULL;
-			// 	}
-			// }
+				if (node == this->max(this->_root))
+					return NULL;
+				if (node->getRight())
+					return (min(node->getRight()));
+			}
 
 			void fixTree(node_pointer node){
 				if (node == this->_root){
@@ -343,6 +331,15 @@ namespace ft
 					return node;
 				while (node->getRight())
 					node = node->getRight();
+				return node;
+			}
+
+			node_pointer min(node_pointer node)
+			{
+				if (!node->getLeft())
+					return node;
+				while (node->getLeft())
+					node = node->getLeft();
 				return node;
 			}
 
