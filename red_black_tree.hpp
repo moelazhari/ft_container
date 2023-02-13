@@ -6,7 +6,7 @@
 /*   By: mazhari <mazhari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:39:00 by mazhari           #+#    #+#             */
-/*   Updated: 2023/02/12 22:53:32 by mazhari          ###   ########.fr       */
+/*   Updated: 2023/02/13 18:04:26 by mazhari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,20 +223,54 @@ namespace ft
 			//
 
 			node_pointer getPredecessor(node_pointer node){
-				if (node->getLeft())
+				if (node == this->min(this->_root))
+					return NULL;
+				else if (node->getLeft())
 					return (max(node->getLeft()));
-				else {
+				else if (!node->getLeft() && node == node->getParent()->getRight())
 					return (node->getParent());
+				else {
+					node_pointer	successor;
+					node_pointer	ancestor = this->_root;
+			
+					while (ancestor != node) {
+						if ( *(node->getData()) > *(ancestor->getData())){
+							successor = ancestor;
+							ancestor = ancestor->getRight();
+						}
+						else
+							ancestor = ancestor->getLeft();
+					}
+					return (successor);
+					
 				}
 			}
-			node_pointer getSuccessor(node_pointer node) {
-				node_pointer tmp;
-				node_pointer parent = node->getParent();
 
-				if (node == this->max(this->_root))
+			node_pointer getSuccessor(node_pointer node) {
+
+				if (node == this->max(this->_root)){
 					return NULL;
-				if (node->getRight())
+				}
+				else if (node->getRight()){
 					return (min(node->getRight()));
+				}
+				else if (!node->getRight() && node == node->getParent()->getLeft()){
+					return node->getParent();
+				}
+				else {
+					node_pointer	successor;
+					node_pointer	ancestor = this->_root;
+			
+					while (ancestor != node) {
+						if ( *(node->getData()) < *(ancestor->getData())){
+							successor = ancestor;
+							ancestor = ancestor->getLeft();
+						}
+						else
+							ancestor = ancestor->getRight();
+					}
+					return (successor);
+				}
 			}
 
 			void fixTree(node_pointer node){
